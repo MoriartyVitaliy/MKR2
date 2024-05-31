@@ -19,3 +19,9 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+    
+class OrderedBook(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    order = models.ForeignKey('Order', on_delete=models.CASCADE)
